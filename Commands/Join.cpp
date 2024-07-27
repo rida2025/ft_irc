@@ -15,7 +15,7 @@ int    JOIN_COMMAND(int fd, std::vector<std::string> &cmds, Client &client, std:
     for (size_t i = 0; i < command.channels_name.size();i++)
     {
         flag = -1;
-        if ((command.channels_name[i][0] == '#' || command.channels_name[i][0] == '&') && command.channels_name[i].size() > 1 && !strchr(" \a\0\n\r,", command.channels_name[i][1]))
+        if ((command.channels_name[i][0] == '#' || command.channels_name[i][0] == '&') && command.channels_name[i].size() > 1 && !strchr(" \a\0\n\r,", command.channels_name[i][1]) && command.channels_name[i].size() <= 200)
         {
             flag = doesChannelExist(channels, command.channels_name[i]);
             if (flag == -1)
